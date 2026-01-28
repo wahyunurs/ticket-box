@@ -47,7 +47,8 @@
                         <label class="label">
                             <span class="label-text font-semibold">Tanggal & Waktu</span>
                         </label>
-                        <input type="datetime-local" name="tanggal_waktu" class="input input-bordered w-full" required />
+                        <input type="datetime-local" name="tanggal_waktu" class="input input-bordered w-full"
+                            required />
                     </div>
 
                     <!-- Lokasi -->
@@ -55,8 +56,12 @@
                         <label class="label">
                             <span class="label-text font-semibold">Lokasi</span>
                         </label>
-                        <input type="text" name="lokasi" placeholder="Contoh: Stadion Utama"
-                            class="input input-bordered w-full" required />
+                        <select name="lokasi_id" class="select select-bordered w-full" required>
+                            <option value="" disabled selected>Pilih Lokasi</option>
+                            @foreach ($lokasis as $lokasi)
+                                <option value="{{ $lokasi->id }}">{{ $lokasi->nama_lokasi }}</option>
+                            @endforeach
+                        </select>
                     </div>
 
                     <!-- Kategori -->
@@ -77,8 +82,8 @@
                         <label class="label">
                             <span class="label-text font-semibold">Gambar Event</span>
                         </label>
-                        <input type="file" name="gambar" accept="image/*" class="file-input file-input-bordered w-full"
-                            required />
+                        <input type="file" name="gambar" accept="image/*"
+                            class="file-input file-input-bordered w-full" required />
                         <label class="label">
                             <span class="label-text-alt">Format: JPG, PNG, max 5MB</span>
                         </label>

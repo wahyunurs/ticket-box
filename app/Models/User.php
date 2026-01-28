@@ -47,4 +47,13 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    /* Penjelasan relasi Eloquent Laravel:
+    * - One to Many: gunakan hasMany pada model induk, dan belongsTo pada model anak.
+    * Contoh: User memiliki banyak Order -> User::hasMany(Order::class), Order::belongsTo(User::class)
+    * - One to One: gunakan hasOne pada model induk, dan belongsTo pada model anak.
+    * Contoh: User memiliki satu Profile -> User::hasOne(Profile::class), Profile::belongsTo(User::class)
+    * - Many to Many: gunakan belongsToMany pada kedua model.
+    * Contoh: User dan Role -> User::belongsToMany(Role::class), Role::belongsToMany(User::class)
+    */
 }

@@ -17,8 +17,8 @@
             <div class="card-body">
                 <h2 class="card-title text-2xl mb-6">Detail Event</h2>
 
-                <form id="eventForm" class="space-y-4" method="post" action="{{ route('admin.events.update', $event->id) }}"
-                    enctype="multipart/form-data">
+                <form id="eventForm" class="space-y-4" method="post"
+                    action="{{ route('admin.events.update', $event->id) }}" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <!-- Nama Event -->
@@ -55,7 +55,8 @@
                             <span class="label-text font-semibold">Lokasi</span>
                         </label>
                         <input type="text" name="lokasi" placeholder="Contoh: Stadion Utama"
-                            class="input input-bordered w-full" value="{{ $event->lokasi }}" disabled required />
+                            class="input input-bordered w-full" value="{{ $event->lokasi->nama_lokasi }}" disabled
+                            required />
                     </div>
 
                     <!-- Kategori -->
@@ -80,8 +81,8 @@
                         <label class="label">
                             <span class="label-text font-semibold">Gambar Event</span>
                         </label>
-                        <input type="file" name="gambar" accept="image/*" class="file-input file-input-bordered w-full"
-                            disabled />
+                        <input type="file" name="gambar" accept="image/*"
+                            class="file-input file-input-bordered w-full" disabled />
                         <label class="label">
                             <span class="label-text-alt">Format: JPG, PNG, max 5MB</span>
                         </label>

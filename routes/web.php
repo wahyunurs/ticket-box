@@ -4,16 +4,17 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 
 // ADMIN CONTROLLERS
+use App\Http\Controllers\User\HomeController;
+use App\Http\Controllers\User\OrderController;
 use App\Http\Controllers\Admin\EventController;
 use App\Http\Controllers\Admin\TiketController;
-use App\Http\Controllers\Admin\CategoryController;
-use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\Admin\HistoriesController;
+use App\Http\Controllers\Admin\LokasiController;
 
 // USER CONTROLLERS
-use App\Http\Controllers\User\HomeController;
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\User\EventUserController;
-use App\Http\Controllers\User\OrderController;
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\HistoriesController;
 
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -44,6 +45,9 @@ Route::middleware('auth')->group(function () {
 
         // CATEGORY MANAGEMENT
         Route::resource('categories', CategoryController::class);
+
+        // LOCATION MANAGEMENT
+        Route::resource('locations', LokasiController::class);
 
         // EVENT MANAGEMENT
         Route::resource('events', EventController::class);
