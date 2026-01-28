@@ -6,7 +6,7 @@
      <meta name="viewport" content="width=device-width, initial-scale=1">
      <meta name="csrf-token" content="{{ csrf_token() }}">
 
-     <title>{{ env('APP_NAME', 'Laravel') }}</title>
+     <title>{{ config('app.name', 'Laravel') }}</title>
 
      <!-- Fonts -->
      <link rel="preconnect" href="https://fonts.bunny.net">
@@ -22,7 +22,7 @@
 
  <body class="font-sans antialiased">
      <div class="min-h-screen bg-gray-100">
-         @include('user.components.navbar')
+         @include('components.user.navigation')
 
          <!-- Page Heading -->
          @isset($header)
@@ -35,7 +35,7 @@
 
          <!-- Page Content -->
          <main>
-             @yield('content')
+             {{ $slot }}
          </main>
      </div>
  </body>

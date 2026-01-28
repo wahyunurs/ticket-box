@@ -12,8 +12,19 @@ use App\Http\Controllers\Admin\HistoriesController;
 
 // USER CONTROLLERS
 use App\Http\Controllers\User\HomeController;
+use App\Http\Controllers\User\EventUserController;
+use App\Http\Controllers\User\OrderController;
+
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+
+Route::get('/events/{event}', [EventUserController::class, 'show'])->name('events.show');
+
+Route::prefix('orders')->name('orders.')->group(function () {
+    Route::get('/', [OrderController::class, 'index'])->name('index');
+    Route::get('/{order}', [OrderController::class, 'show'])->name('show');
+    Route::post('/', [OrderController::class, 'store'])->name('store');
+});
 
 Route::get('/dashboard', function () {
     return view('dashboard');
