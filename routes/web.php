@@ -10,9 +10,10 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\HistoriesController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// USER CONTROLLERS
+use App\Http\Controllers\User\HomeController;
+
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -22,26 +23,28 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
 
-// ADMIN
-Route::middleware('admin')->prefix('admin')->name('admin.')->group(function () {
-    // DASHBOARD
-    Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
-    // CATEGORY MANAGEMENT
-    Route::resource('categories', CategoryController::class);
 
-    // EVENT MANAGEMENT
-    Route::resource('events', EventController::class);
+    // ADMIN
+    Route::middleware('admin')->prefix('admin')->name('admin.')->group(function () {
+        // DASHBOARD
+        Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
-    // TIKET MANAGEMENT
-    Route::resource('tickets', TiketController::class);
+        // CATEGORY MANAGEMENT
+        Route::resource('categories', CategoryController::class);
 
-    // HISTORY MANAGEMENT
-    Route::prefix('histories')->name('histories.')->group(function () {
-        Route::get('/', [HistoriesController::class, 'index'])->name('index');
-        Route::get('/{history}', [HistoriesController::class, 'show'])->name('show');
+        // EVENT MANAGEMENT
+        Route::resource('events', EventController::class);
+
+        // TIKET MANAGEMENT
+        Route::resource('tickets', TiketController::class);
+
+        // HISTORY MANAGEMENT
+        Route::prefix('histories')->name('histories.')->group(function () {
+            Route::get('/', [HistoriesController::class, 'index'])->name('index');
+            Route::get('/{history}', [HistoriesController::class, 'show'])->name('show');
+        });
     });
 });
 
