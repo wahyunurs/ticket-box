@@ -1,6 +1,4 @@
-@extends('admin.components.layout')
-
-@section('content')
+<x-layouts.admin title="History Pembelian">
     <div class="container mx-auto p-10">
         <div class="flex">
             <h1 class="text-3xl font-semibold mb-4">History Pembelian</h1>
@@ -39,4 +37,4 @@
             </table>
         </div>
     </div>
-@endsection
+</x-layouts.admin>

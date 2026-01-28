@@ -1,6 +1,4 @@
-@extends('admin.components.layout')
-
-@section('content')
+<x-layouts.admin title="Edit Event">
     <div class="container mx-auto p-10">
         <div class="card bg-base-100 shadow-sm">
             <div class="card-body">
@@ -140,4 +138,4 @@
             successAlert.classList.add('hidden');
         });
     </script>
-@endsection
+</x-layouts.admin>

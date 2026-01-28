@@ -1,6 +1,4 @@
-@extends('admin.components.layout')
-
-@section('content')
+<x-layouts.admin title="Detail Event">
     <div class="container mx-auto p-10">
         @if (session('success'))
             <div class="toast toast-bottom toast-center z-50">
@@ -170,4 +168,4 @@
             edit_ticket_modal.showModal();
         }
     </script>
-@endsection
+</x-layouts.admin>

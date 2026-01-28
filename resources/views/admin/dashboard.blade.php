@@ -1,6 +1,4 @@
-@extends('admin.components.layout')
-
-@section('content')
+<x-layouts.admin title="Dashboard Admin">
     <div class="container mx-auto p-10">
         <h1 class="text-3xl font-semibold mb-4">Dashboard Admin</h1>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-5">
@@ -24,4 +22,4 @@
             </div>
         </div>
     </div>
-@endsection
+</x-layouts.admin>

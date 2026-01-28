@@ -1,6 +1,4 @@
-@extends('admin.components.layout')
-
-@section('content')
+<x-layouts.admin title="Tambah Event Baru">
     @if ($errors->any())
         <div class="toast toast-bottom toast-center z-50">
             <ul class="alert alert-error">
@@ -145,4 +143,4 @@
             successAlert.classList.add('hidden');
         });
     </script>
-@endsection
+</x-layouts.admin>

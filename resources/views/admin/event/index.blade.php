@@ -1,6 +1,4 @@
-@extends('admin.components.layout')
-
-@section('content')
+<x-layouts.admin title="Manajemen Event">
     @if (session('success'))
         <div class="toast toast-bottom toast-center">
             <div class="alert alert-success">
@@ -88,4 +86,4 @@
             delete_modal.showModal();
         }
     </script>
-@endsection
+</x-layouts.admin>

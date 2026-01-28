@@ -1,6 +1,4 @@
-@extends('admin.components.layout')
-
-@section('content')
+<x-layouts.admin title="Detail Pemesanan">
     <section class="max-w-4xl mx-auto py-12 px-6">
         <div class="flex items-center justify-between mb-6">
             <h1 class="text-2xl font-bold">Detail Pemesanan</h1>
@@ -49,4 +47,4 @@
 
         </div>
     </section>
-@endsection
+</x-layouts.admin>
