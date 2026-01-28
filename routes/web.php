@@ -2,10 +2,13 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
+
+// ADMIN CONTROLLERS
 use App\Http\Controllers\Admin\EventController;
 use App\Http\Controllers\Admin\TiketController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\HistoriesController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -34,6 +37,12 @@ Route::middleware('admin')->prefix('admin')->name('admin.')->group(function () {
 
     // TIKET MANAGEMENT
     Route::resource('tickets', TiketController::class);
+
+    // HISTORY MANAGEMENT
+    Route::prefix('histories')->name('histories.')->group(function () {
+        Route::get('/', [HistoriesController::class, 'index'])->name('index');
+        Route::get('/{history}', [HistoriesController::class, 'show'])->name('show');
+    });
 });
 
 require __DIR__ . '/auth.php';
