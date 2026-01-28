@@ -31,7 +31,7 @@ class CategoryController extends Controller
         return redirect()->route('admin.categories.index')->with('success', 'Kategori berhasil ditambahkan.');
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, string $id)
     {
         $payload = $request->validate([
             'nama' => 'required|string|max:255',
@@ -48,7 +48,7 @@ class CategoryController extends Controller
         return redirect()->route('admin.categories.index')->with('success', 'Kategori berhasil diperbarui.');
     }
 
-    public function destroy($id)
+    public function destroy(string $id)
     {
         Kategori::destroy($id);
         return redirect()->route('admin.categories.index')->with('success', 'Kategori berhasil dihapus.');

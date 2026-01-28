@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\EventController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -20,17 +21,15 @@ Route::middleware('auth')->group(function () {
 });
 
 // ADMIN
-Route::middleware('admin')->prefix('admin')->group(function () {
+Route::middleware('admin')->prefix('admin')->name('admin.')->group(function () {
     // DASHBOARD
-    Route::get('/', [DashboardController::class, 'index'])->name('admin.dashboard');
+    Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
     // CATEGORY MANAGEMENT
-    Route::prefix('categories')->group(function () {
-        Route::get('/', [CategoryController::class, 'index'])->name('admin.categories.index');
-        Route::post('/', [CategoryController::class, 'store'])->name('admin.categories.store');
-        Route::put('/{id}', [CategoryController::class, 'update'])->name('admin.categories.update');
-        Route::delete('/{id}', [CategoryController::class, 'destroy'])->name('admin.categories.destroy');
-    });
+    Route::resource('categories', CategoryController::class);
+
+    // EVENT MANAGEMENT
+    Route::resource('events', EventController::class);
 });
 
 require __DIR__ . '/auth.php';
