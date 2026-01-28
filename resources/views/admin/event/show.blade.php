@@ -111,6 +111,12 @@
         </div>
     </div>
 
+    <!-- TIKET MANAGEMENT -->
+    @include('admin.event.tiket.index')
+    @include('admin.event.tiket.create')
+    @include('admin.event.tiket.edit')
+    @include('admin.event.tiket.delete')
+
     <script>
         const form = document.getElementById('eventForm');
         const fileInput = form.querySelector('input[type="file"]');
@@ -130,5 +136,38 @@
                 reader.readAsDataURL(file);
             }
         });
+
+        // Handle reset
+        form.addEventListener('reset', function() {
+            imagePreview.classList.add('hidden');
+            successAlert.classList.add('hidden');
+        });
+
+        function openDeleteModal(button) {
+            const id = button.dataset.id;
+            const form = document.querySelector('#delete_modal form');
+            document.getElementById("delete_ticket_id").value = id;
+
+            // Set action dengan parameter ID
+            form.action = `/admin/tickets/${id}`;
+            delete_modal.showModal();
+        }
+
+        function openEditModal(button) {
+            const id = button.dataset.id;
+            const tipe = button.dataset.tipe;
+            const harga = button.dataset.harga;
+            const stok = button.dataset.stok;
+
+            const form = document.querySelector('#edit_ticket_modal form');
+            document.getElementById("edit_ticket_id").value = id;
+            document.getElementById("edit_tipe").value = tipe;
+            document.getElementById("edit_harga").value = harga;
+            document.getElementById("edit_stok").value = stok;
+
+            // Set action dengan parameter ID
+            form.action = `/admin/tickets/${id}`;
+            edit_ticket_modal.showModal();
+        }
     </script>
 @endsection

@@ -2,9 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Admin\EventController;
+use App\Http\Controllers\Admin\TiketController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\Admin\EventController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -30,6 +31,9 @@ Route::middleware('admin')->prefix('admin')->name('admin.')->group(function () {
 
     // EVENT MANAGEMENT
     Route::resource('events', EventController::class);
+
+    // TIKET MANAGEMENT
+    Route::resource('tickets', TiketController::class);
 });
 
 require __DIR__ . '/auth.php';
